@@ -9,6 +9,8 @@ public class Fruit : MonoBehaviour
     private Collider fruitCollider;
     private ParticleSystem particleEffect;
 
+    public int points = 1;
+
     private void Awake()
     {
         fruitRigidbody = GetComponent<Rigidbody>();
@@ -16,9 +18,9 @@ public class Fruit : MonoBehaviour
         particleEffect = GetComponentInChildren<ParticleSystem>();
     }
 
-    private void Slice(Vector3 direction, Vector3 position)
+    private void Slice(Vector3 direction, Vector3 position, float force)
     {
-        FindObjectOfType<GameManager>().IncreaseScore(1);
+        FindObjectOfType<GameManager>().IncreaseScore(points);
 
         // Disable the whole fruit
         fruitCollider.enabled = false;
@@ -30,7 +32,7 @@ public class Fruit : MonoBehaviour
 
         // Rotate based on the slice angle
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        sliced.transform.eulerAngles = new Vector3(0f, 0f, angle);
+        sliced.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
         Rigidbody[] slices = sliced.GetComponentsInChildren<Rigidbody>();
 
@@ -38,10 +40,8 @@ public class Fruit : MonoBehaviour
         foreach (Rigidbody slice in slices)
         {
             slice.velocity = fruitRigidbody.velocity;
-            slice.AddForceAtPosition(direction * 5f, position, ForceMode.Impulse);
+            slice.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
         }
-
-        Destroy(sliced, 5f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,7 +49,7 @@ public class Fruit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Blade blade = other.GetComponent<Blade>();
-            Slice(blade.direction, blade.transform.position);
+            Slice(blade.direction, blade.transform.position, blade.sliceForce);
         }
     }
 

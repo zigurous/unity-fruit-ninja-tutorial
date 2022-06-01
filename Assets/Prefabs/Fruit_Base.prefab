@@ -4837,7 +4837,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf7a21216b31f4c44a8685c84b2f547f, type: 2}
+  - {fileID: -4132831441543248935, guid: d9a8c81ddca4f2f4eb40598c95c1b369, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4933,8 +4933,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whole: {fileID: 8763740054025600018}
   sliced: {fileID: 8763740054113742822}
-  sliceForce: 5
-  points: 1
 --- !u!54 &3266447441071319141
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a81be6c9d47f64d9e8262eed6997fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliceForce: 5
   minSliceVelocity: 0.01
 --- !u!135 &835024515
 SphereCollider:

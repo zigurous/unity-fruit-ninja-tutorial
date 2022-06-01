@@ -9,6 +9,7 @@ public class Blade : MonoBehaviour
     private Collider sliceCollider;
     private TrailRenderer sliceTrail;
 
+    public float sliceForce = 5f;
     public float minSliceVelocity = 0.01f;
 
     private bool slicing;
@@ -43,7 +44,9 @@ public class Blade : MonoBehaviour
 
     private void StartSlice()
     {
-        transform.position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 position = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        position.z = 0f;
+        transform.position = position;
 
         slicing = true;
         sliceCollider.enabled = true;

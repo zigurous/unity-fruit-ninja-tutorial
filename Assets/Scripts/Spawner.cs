@@ -41,9 +41,11 @@ public class Spawner : MonoBehaviour
 
         while (enabled)
         {
-            GameObject prefab = Random.value > bombChance ?
-                fruitPrefabs[Random.Range(0, fruitPrefabs.Length)] :
-                bombPrefab;
+            GameObject prefab = fruitPrefabs[Random.Range(0, fruitPrefabs.Length)];
+
+            if (Random.value < bombChance) {
+                prefab = bombPrefab;
+            }
 
             Vector3 position = new Vector3();
             position.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
@@ -52,11 +54,11 @@ public class Spawner : MonoBehaviour
 
             Quaternion rotation = Quaternion.Euler(0f, 0f, Random.Range(minAngle, maxAngle));
 
-            GameObject obj = Instantiate(prefab, position, rotation);
-            Destroy(obj, maxLifetime);
+            GameObject fruit = Instantiate(prefab, position, rotation);
+            Destroy(fruit, maxLifetime);
 
             float force = Random.Range(minForce, maxForce);
-            obj.GetComponent<Rigidbody>().AddForce(obj.transform.up * force, ForceMode.Impulse);
+            fruit.GetComponent<Rigidbody>().AddForce(fruit.transform.up * force, ForceMode.Impulse);
 
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
         }
