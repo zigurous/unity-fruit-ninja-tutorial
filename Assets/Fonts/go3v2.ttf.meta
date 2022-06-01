@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41a38b900377c4a459b1e481b3c79877
+guid: 9f3e8894fcc6f4f4b8f5c56877769e91
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Coolvetica
+  - Gang of Three
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
