@@ -6,4 +6,4 @@
 - **Topics**: Physics, Models, Materials
 - **Version**: Unity 2020.3 (LTS)
 - [**Download**](https://github.com/zigurous/unity-fruit-ninja-tutorial/archive/refs/heads/main.zip)
-- [**Watch Video**](https://www.youtube.com/c/zigurous)
+- [**Watch Video**](youtu.be/xtt1ae_ifhm)
