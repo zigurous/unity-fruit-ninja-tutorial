@@ -61,6 +61,14 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         scoreText.text = score.ToString();
+
+        float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
+
+        if (score > hiscore)
+        {
+            hiscore = score;
+            PlayerPrefs.SetFloat("hiscore", hiscore);
+        }
     }
 
     public void Explode()
