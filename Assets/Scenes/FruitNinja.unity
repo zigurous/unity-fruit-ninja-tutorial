@@ -718,6 +718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2029e1e563546de449e26436fe25cd8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blade: {fileID: 835024514}
+  spawner: {fileID: 1865947125}
   scoreText: {fileID: 860532809}
   fadeImage: {fileID: 1744158372}
 --- !u!1 &1744158370

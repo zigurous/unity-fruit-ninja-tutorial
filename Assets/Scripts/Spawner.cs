@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Spawner : MonoBehaviour
 {
     private Collider spawnArea;
@@ -47,10 +48,12 @@ public class Spawner : MonoBehaviour
                 prefab = bombPrefab;
             }
 
-            Vector3 position = new Vector3();
-            position.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
-            position.y = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y);
-            position.z = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z);
+            Vector3 position = new Vector3
+            {
+                x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
+                y = Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
+                z = Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
+            };
 
             Quaternion rotation = Quaternion.Euler(0f, 0f, Random.Range(minAngle, maxAngle));
 

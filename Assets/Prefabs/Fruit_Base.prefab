@@ -4933,6 +4933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whole: {fileID: 8763740054025600018}
   sliced: {fileID: 8763740054113742822}
+  points: 1
 --- !u!54 &3266447441071319141
 Rigidbody:
   m_ObjectHideFlags: 0

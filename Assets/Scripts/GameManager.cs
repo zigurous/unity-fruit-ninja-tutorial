@@ -4,18 +4,24 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text scoreText;
-    public Image fadeImage;
+    public static GameManager Instance { get; private set; }
 
-    private Blade blade;
-    private Spawner spawner;
+    [SerializeField] private Blade blade;
+    [SerializeField] private Spawner spawner;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private Image fadeImage;
 
     private int score;
+    public int Score => score;
 
     private void Awake()
     {
-        blade = FindObjectOfType<Blade>();
-        spawner = FindObjectOfType<Spawner>();
+        if (Instance != null) {
+            DestroyImmediate(gameObject);
+        } else {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     private void Start()
