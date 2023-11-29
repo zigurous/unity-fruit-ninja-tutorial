@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Blade blade;
     [SerializeField] private Spawner spawner;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text maxScoreText;
     [SerializeField] private Image fadeImage;
 
     private int score;
+    private int maxScore;
     public int Score => score;
 
     private void Awake()
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
         NewGame();
     }
 
@@ -37,9 +40,13 @@ public class GameManager : MonoBehaviour
 
         blade.enabled = true;
         spawner.enabled = true;
-
+        maxScore = LoadData();
+        maxScore = score > maxScore ? score:maxScore;
+        SaveData();
+        
         score = 0;
         scoreText.text = score.ToString();
+        maxScoreText.text = "Highest Score : " + maxScore.ToString();
     }
 
     private void ClearScene()
@@ -62,12 +69,9 @@ public class GameManager : MonoBehaviour
         score += points;
         scoreText.text = score.ToString();
 
-        float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
-
-        if (score > hiscore)
-        {
-            hiscore = score;
-            PlayerPrefs.SetFloat("hiscore", hiscore);
+        if(score > maxScore){
+            maxScore = score;
+            SaveData();
         }
     }
 
@@ -112,6 +116,14 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void SaveData(){
+        PlayerPrefs.SetInt("Maxed_Score",maxScore);
+    }
+    
+    int LoadData(){
+        return maxScore = PlayerPrefs.GetInt("Maxed_Score");
     }
 
 }
