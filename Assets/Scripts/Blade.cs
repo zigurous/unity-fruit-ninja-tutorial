@@ -9,11 +9,8 @@ public class Blade : MonoBehaviour
     private Collider sliceCollider;
     private TrailRenderer sliceTrail;
 
-    private Vector3 direction;
-    public Vector3 Direction => direction;
-
-    private bool slicing;
-    public bool Slicing => slicing;
+    public Vector3 direction { get; private set; }
+    public bool slicing { get; private set; }
 
     private void Awake()
     {
